@@ -24,7 +24,6 @@ By combining serverless architecture with PWA capabilities, Meet App delivers a 
 - **Data Visualization:** Charts and graphs for event analytics
 - **Testing Framework:** Jest & React Testing Library
 - **Deployment:**
-- 
 
 ## Key Features
 
