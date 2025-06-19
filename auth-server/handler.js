@@ -69,9 +69,10 @@ module.exports.getAccessToken = async (event) => {
       };
     });
 };
-module.exports.getAccessToken = async (event) => {
+
+module.exports.getCalendarEvents = async (event) => {
   // Decode authorization code extracted from the URL query
-  const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
+  const access_token = decodeURIComponent(`${event.pathParameters['access-token']}`);
   oAuth2Client.setCredentials({ access_token });
 
 
@@ -109,7 +110,4 @@ module.exports.getAccessToken = async (event) => {
         body: JSON.stringify(error)
       }
     })
-
-
-
 }
