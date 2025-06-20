@@ -1,7 +1,9 @@
 // src/__tests__/App.test.js
-import { render } from '@testing-library/react';
+import { render, within, waitFor } from '@testing-library/react';
 import React from 'react';
 import App from './../App';
+import userEvent from '@testing-library/user-event';
+import { getEvents } from '../api';
 
 describe('<App /> component', () => {
   let AppDOM;
@@ -46,6 +48,12 @@ describe('<App /> integration', () => {
     const berlinEvents = allEvents.filter(
       event => event.location === 'Berlin, Germany'
     );
+
+    expect(allRenderedEventItems.length).toBe(berlinEvents.length);
+
+       allRenderedEventItems.forEach(event => {
+     expect(event.textContent).toContain("Berlin, Germany");
+   });
   });
 });
 
