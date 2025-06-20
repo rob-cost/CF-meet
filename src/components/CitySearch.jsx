@@ -14,7 +14,7 @@ const CitySearch = ({allLocations}) => {
     return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
   }) : [];
 
-
+ 
   setQuery(value);
   setSuggestions(filteredLocations);
 };
@@ -24,6 +24,10 @@ const handleItemClicked = (event) => {
     setQuery(value);
     setShowSuggestions(false); // to hide the list
   };
+
+    useEffect(() => {
+   setSuggestions(allLocations);
+ }, [`${allLocations}`]);
 
   return (
     <div id="city-search">
