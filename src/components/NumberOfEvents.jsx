@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getEvents } from "../api";
+import { use } from "react";
 
-const NumberOfEvents = () => {
+const NumberOfEvents = ({setCurrentNOE}) => {
     const [numberEvents, setNumberEvents] = useState(32);
+
+    useEffect(() => {
+        setCurrentNOE(numberEvents)
+    }, [numberEvents])
+
 return (
-    <div id="number-events">
+    <div id="number-events" >
+
         <input
             type="text"
             className="Number-events"
