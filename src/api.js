@@ -12,10 +12,35 @@ import mockData from './mock-data';
  * It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
  * The Set will remove all duplicates from the array.
  */
+
+/* ---- EXTRACT LOCATION OF THE EVENT ---- */
 export const extractLocations = (events) => {
   const extractedLocations = events.map((event) => event.location);
   const locations = [...new Set(extractedLocations)];
   return locations;
+};
+
+
+/* ---- GET ACCESS WITH THE TOKEN ---- */
+export const getAccessToken = async () => {
+  const accessToken = localStorage.getItem('access_token');
+  const tokenCheck = accessToken && (await checkToken(accessToken));
+ if (!accessToken || tokenCheck.error) {
+   await localStorage.removeItem("access_token");
+   const searchParams = new URLSearchParams(window.location.search);
+   const code = await searchParams.get("code");
+   if (!code) {
+     const response = await fetch(
+       "https://izqu0q7bi7.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
+     );
+     const result = await response.json();
+     const { authUrl } = result;
+     return (window.location.href = authUrl);
+   }
+   return code && getToken(code);
+ }
+ return accessToken;
+
 };
 
 const checkToken = async (accessToken) => {
@@ -27,10 +52,8 @@ const checkToken = async (accessToken) => {
 };
 
 
-/**
- *
- * This function will fetch the list of all events
- */
+
+ /* ---- This function will fetch the list of all events ---- */
 export const getEvents = async () => {
   if (window.location.href.startsWith('http://localhost')) {
    return mockData;
@@ -38,7 +61,7 @@ export const getEvents = async () => {
  const token = await getAccessToken();
  if (token) {
    removeQuery();
-   const url =  "https://cf-meet-blue.vercel.app/api/get-events" + "/" + token;
+   const url =  "https://izqu0q7bi7.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
    const response = await fetch(url);
    const result = await response.json();
    if (result) {
@@ -65,7 +88,7 @@ const removeQuery = () => {
 const getToken = async (code) => {
  const encodeCode = encodeURIComponent(code);
  const response = await fetch(
-   'https://cf-meet-blue.vercel.app/api/token' + '/' + encodeCode
+   'https://izqu0q7bi7.execute-api.eu-central-1.amazonaws.com/dev/api/token' + '/' + encodeCode
  );
  const { access_token } = await response.json();
  access_token && localStorage.setItem("access_token", access_token);
@@ -74,25 +97,3 @@ const getToken = async (code) => {
  return access_token;
 };
 
-export const getAccessToken = async () => {
-  const accessToken = localStorage.getItem('access_token');
-  const tokenCheck = accessToken && (await checkToken(accessToken));
-
-
- if (!accessToken || tokenCheck.error) {
-   await localStorage.removeItem("access_token");
-   const searchParams = new URLSearchParams(window.location.search);
-   const code = await searchParams.get("code");
-   if (!code) {
-     const response = await fetch(
-       "https://cf-meet-blue.vercel.app/api/get-auth-url"
-     );
-     const result = await response.json();
-     const { authUrl } = result;
-     return (window.location.href = authUrl);
-   }
-   return code && getToken(code);
- }
- return accessToken;
-
-};
