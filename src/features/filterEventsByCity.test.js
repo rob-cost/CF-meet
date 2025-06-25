@@ -8,8 +8,8 @@ import { getEvents } from '../api';
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
 
 defineFeature(feature, test => {
-    test('When user hasn’t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
-        given('user hasn’t searched for any city', () => {
+    test("When user hasn't searched for a city, show upcoming events from all cities.", ({ given, when, then }) => {
+        given("user hasn't searched for any city", () => {
 
         });
         let AppComponent;
@@ -42,9 +42,9 @@ defineFeature(feature, test => {
             CitySearchDOM = AppDOM.querySelector('#city-search');
             const citySearchInput = within(CitySearchDOM).queryByRole('textbox');  
             await user.type(citySearchInput, "Berlin");
-        });
+        }); 
 
-        then('the user should receive a list of cities (suggestions) that match what they’ve typed', () => {
+        then("the user should receive a list of cities (suggestions) that match what they've typed.", () => {
             const suggestionListItems = within(CitySearchDOM).queryAllByRole('listitem'); 
             expect(suggestionListItems).toHaveLength(2);
         });
