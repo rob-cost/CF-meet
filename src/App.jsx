@@ -3,7 +3,7 @@ import EventList from "./components/EventList"
 import CitySearch from "./components/CitySearch"
 import NumberOfEvents from "./components/NumberOfEvents"
 import { getEvents, extractLocations } from "./api"
-import { InfoAlert, ErrorAlert} from "./components/Alert"
+import { InfoAlert, ErrorAlert, WarningAlert} from "./components/Alert"
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -12,6 +12,7 @@ function App() {
   const [currentCity, setCurrentCity] = useState("See all cities");
   const [infoAlert, setInfoAlert] = useState("");
   const [errorAlert, setErrorAlert] = useState("");
+  const [warningAlert, setWarningAlert] = useState("");
 
 
    const fetchData = async () => {
@@ -23,12 +24,14 @@ function App() {
    setAllLocations(extractLocations(allEvents));
  }
   useEffect(() => {
-   fetchData();
+    if (navigator.online) {
+      setWarningAlert = ""
+    } else {
+      setWarningAlert = "You are offline. The displayed list has been loaded from the cache"
+    }
+    fetchData();
  }, [currentCity, currentNOE]);
 
- 
-
- 
 
   return (
     <div className="App">
