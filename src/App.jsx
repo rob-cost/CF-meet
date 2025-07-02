@@ -55,7 +55,6 @@ function App() {
       setErrorAlert={setErrorAlert}
       />
       <EventList events={events}/>
-      
     </div>
   )
 }
