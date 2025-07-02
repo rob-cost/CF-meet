@@ -9,7 +9,10 @@ describe('<NumberOfEvents/> component', () => {
   let NumberOfEventsComponent;
   beforeEach(() => {
     const mockSetCurrentNOE = jest.fn();
-    NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={mockSetCurrentNOE} />)
+    NumberOfEventsComponent = render(<NumberOfEvents 
+      setCurrentNOE={mockSetCurrentNOE}
+      setErrorAlert={() => {}} 
+      />)
   })
 
   test('the component contain an element with the role of textbox', () => {
