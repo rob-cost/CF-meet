@@ -24,10 +24,10 @@ function App() {
    setAllLocations(extractLocations(allEvents));
  }
   useEffect(() => {
-    if (navigator.online) {
-      setWarningAlert = ""
+    if (navigator.online === true) {
+      setWarningAlert("")
     } else {
-      setWarningAlert = "You are offline. The displayed list has been loaded from the cache"
+      setWarningAlert("You are offline. The displayed list has been loaded from the cache")
     }
     fetchData();
  }, [currentCity, currentNOE]);
