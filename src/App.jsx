@@ -24,11 +24,13 @@ function App() {
    setAllLocations(extractLocations(allEvents));
  }
   useEffect(() => {
-    if (navigator.online === true) {
-      setWarningAlert("")
+    let infoText
+    if (navigator.onLine) {
+      infoText = ""
     } else {
-      setWarningAlert("You are offline. The displayed list has been loaded from the cache")
+      infoText = "You are offline. The displayed list has been loaded from the cache"
     }
+    setWarningAlert(infoText)
     fetchData();
  }, [currentCity, currentNOE]);
 
@@ -38,6 +40,7 @@ function App() {
       <div className="alerts-container">
        {infoAlert.length ? <InfoAlert text={infoAlert}/> : null}
        {errorAlert.length ? <ErrorAlert text={errorAlert}/> : null}
+       {warningAlert.length ? <WarningAlert text={warningAlert}/> : null}
       </div>
       <h1>Meet App</h1>
       <h3>Choose your nearest City</h3>
