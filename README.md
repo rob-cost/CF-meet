@@ -7,13 +7,19 @@ Built with a Test-Driven Development (TDD) approach, Meet App leverages AWS Lamb
 
 By combining serverless architecture with PWA capabilities, Meet App delivers a fast, reliable, and engaging user experience that works seamlessly across all devices and platforms, even when offline.
 
+You can visit the app here: (https://cf-meet-blue.vercel.app/)
+
+---
+
 ## Table of Contents
+
 - [Project Overview](#project-overview) 
 - [Tech Stack](#tech-stack)
-- [Key Features](#key-features)
+- [Features](#key-features)
 - [User Stories](#user-stories)
 - [Usage](#usage)
 
+---
 
 ## Tech Stack
 
@@ -23,17 +29,20 @@ By combining serverless architecture with PWA capabilities, Meet App delivers a 
 - **Authentication:** Google OAuth2  
 - **Data Visualization:** Recharts (Pie and Bar charts)  
 - **Offline Support:** Progressive Web App (PWA) with Service Worker  
-- **Testing:** Test-Driven Development (TDD) methodology applied  
+- **Testing:** Test-Driven Development (TDD) methodology applied
 
-## Key Features
+---
 
- **Filter Events by City:** Quickly narrow down event listings based on your preferred city.  
+## Features
+
+- **Filter Events by City:** Quickly narrow down event listings based on your preferred city.  
 - **Show/Hide Event Details:** Expand events to view more detailed information or hide them for a cleaner list.  
 - **Specify Number of Events:** Control how many events you want to see at once.  
 - **Use the App When Offline:** Thanks to PWA capabilities and a service worker, you can browse cached events even without internet connectivity.  
 - **Add an App Shortcut to the Home Screen:** Install Meet App on your device home screen for quick access like a native app.  
 - **Display Charts Visualizing Event Details:** Gain insights through interactive bar and pie charts summarizing event genres and city distributions. 
 
+---
 
 ## User Stories
 
@@ -130,6 +139,41 @@ View events by city chart
 **Given** the user is using the app;
 **When** the user tabs to on an event;
 **Then** the user should see a chart showing the number of events per city.
+
+---
+
+## Getting Started
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/yourusername/meet.git
+cd meet
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Environment Setup
+
+Create a .env file in the root directory and add your environment variables:
+envVITE_API_BASE_URL=http://localhost:8080
+#### Add other environment variables as needed
+
+
+### 4. Start the Development Server
+
+```bash
+npm run dev
+```
+#### or
+```bash
+yarn dev
+```
+The app will be available at http://localhost:5173 (or the port shown in your terminal).
 
 
 
