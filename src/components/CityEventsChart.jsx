@@ -35,5 +35,6 @@ const CityEventsChart = ({allLocations, events}) => {
     </ResponsiveContainer>
   );
 }
+// 
 
 export default CityEventsChart
