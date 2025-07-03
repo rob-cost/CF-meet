@@ -18,6 +18,7 @@ You can visit the app here: (https://cf-meet-blue.vercel.app/)
 - [Features](#key-features)
 - [User Stories](#user-stories)
 - [Usage](#usage)
+- [Interface examples](#interface-examples)
 
 ---
 
@@ -175,5 +176,12 @@ yarn dev
 ```
 The app will be available at http://localhost:5173 (or the port shown in your terminal).
 
+---
 
+### 5. Interface examples
+
+![Screenshot 2025-07-03 at 13 21 04](https://github.com/user-attachments/assets/d061f2df-d773-45db-b953-83062264330d)
+![Screenshot 2025-07-03 at 13 22 00](https://github.com/user-attachments/assets/a7a25d08-d04c-4c4d-a9c2-7ac698ab6101)
+![Screenshot 2025-07-03 at 14 18 37](https://github.com/user-attachments/assets/43267927-d014-4249-97d0-f68a44d33d1b)
+![Screenshot 2025-07-03 at 14 18 50](https://github.com/user-attachments/assets/25df3386-1cef-4b7c-bda2-8d3d5aa6fec0)
 
