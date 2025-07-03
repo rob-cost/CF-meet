@@ -4,11 +4,23 @@ import React, { useState } from 'react';
 
 const Event = ({event}) => {
   const [showDetails, setShowDetails] = useState(false);
+  const date = new Date(event.start.dateTime);
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    timeZoneName: 'short',
+    timeZone: event.start.timeZone,
+  };
+  const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
   return (
     <li className='event'>
       <h2>{event.summary}</h2>
       <p>{event.location}</p>
-      <p>{event.created}</p>
+      <p>{formattedDate}</p>
 
       <button className='event-button' onClick={() => setShowDetails(!showDetails)}>
         {showDetails ? 'Hide Details' : 'Show Details'}
