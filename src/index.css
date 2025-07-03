@@ -140,3 +140,7 @@ input[type="number"]:focus {
   background-color: #005fa3;
 }
 
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr
+}

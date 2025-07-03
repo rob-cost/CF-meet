@@ -56,7 +56,7 @@ function App() {
       setCurrentNOE={setCurrentNOE}
       setErrorAlert={setErrorAlert}
       />
-      <div className="charts-container">
+      <div className="charts-container" >
       <EventGenreChart
       events={events} />
       <CityEventsChart 
