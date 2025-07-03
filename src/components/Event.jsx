@@ -16,6 +16,7 @@ const Event = ({event}) => {
     timeZone: event.start.timeZone,
   };
   const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+  
   return (
     <li className='event'>
       <h2>{event.summary}</h2>
