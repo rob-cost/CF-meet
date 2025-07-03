@@ -176,6 +176,8 @@ yarn dev
 ```
 The app will be available at http://localhost:5173 (or the port shown in your terminal).
 
+---
+
 ### 5. Interface examples
 
 ![Screenshot 2025-07-03 at 13 21 04](https://github.com/user-attachments/assets/d061f2df-d773-45db-b953-83062264330d)
