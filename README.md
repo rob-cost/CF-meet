@@ -1,39 +1,48 @@
 # Meet App
 
-## Overview
+## Project Overview
 
 Meet App is a serverless, progressive web application (PWA) built with React that allows users to search for and discover upcoming events in cities around the world. The application leverages the Google Calendar API to fetch real-time event data and provides interactive data visualizations to help users analyze event trends and patterns.
+Built with a Test-Driven Development (TDD) approach, Meet App leverages AWS Lambda for serverless backend logic and Google OAuth2 for secure user authentication. As a fully responsive PWA, the app works seamlessly on desktop and mobile devices alike, allowing users to install it on their phones and access event information on the go. 
 
 By combining serverless architecture with PWA capabilities, Meet App delivers a fast, reliable, and engaging user experience that works seamlessly across all devices and platforms, even when offline.
 
+You can visit the app here: (https://cf-meet-blue.vercel.app/)
+
+---
+
 ## Table of Contents
-- [Overview](#overview)
+
+- [Project Overview](#project-overview) 
 - [Tech Stack](#tech-stack)
-- [Key Features](#key-features)
+- [Features](#key-features)
 - [User Stories](#user-stories)
 - [Usage](#usage)
 
+---
 
 ## Tech Stack
 
-- **Frontend Framework:** React
-- **Architecture:** Serverless
+- **Frontend:** React.js  
+- **Backend:** AWS Lambda (serverless functions)
 - **API:** Google Calendar API
-- **Development Methodology:** Test-Driven Development (TDD)
-- **App Type:** Progressive Web Application (PWA)
-- **Data Visualization:** Charts and graphs for event analytics
-- **Testing Framework:** Jest & React Testing Library
-- **Deployment:**
+- **Authentication:** Google OAuth2  
+- **Data Visualization:** Recharts (Pie and Bar charts)  
+- **Offline Support:** Progressive Web App (PWA) with Service Worker  
+- **Testing:** Test-Driven Development (TDD) methodology applied
 
-## Key Features
+---
 
-### Core Functionality
-- **City-based Event Search:** Search and filter events by city location
-- **Event Details Management:** Show/hide detailed event information
-- **Customizable Display:** Specify the number of events displayed per page
-- **Offline Capability:** Access previously loaded events without internet connection
-- **PWA Features:** Add app shortcut to home screen for quick access
+## Features
 
+- **Filter Events by City:** Quickly narrow down event listings based on your preferred city.  
+- **Show/Hide Event Details:** Expand events to view more detailed information or hide them for a cleaner list.  
+- **Specify Number of Events:** Control how many events you want to see at once.  
+- **Use the App When Offline:** Thanks to PWA capabilities and a service worker, you can browse cached events even without internet connectivity.  
+- **Add an App Shortcut to the Home Screen:** Install Meet App on your device home screen for quick access like a native app.  
+- **Display Charts Visualizing Event Details:** Gain insights through interactive bar and pie charts summarizing event genres and city distributions. 
+
+---
 
 ## User Stories
 
@@ -130,6 +139,41 @@ View events by city chart
 **Given** the user is using the app;
 **When** the user tabs to on an event;
 **Then** the user should see a chart showing the number of events per city.
+
+---
+
+## Getting Started
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/yourusername/meet.git
+cd meet
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Environment Setup
+
+Create a .env file in the root directory and add your environment variables:
+envVITE_API_BASE_URL=http://localhost:8080
+#### Add other environment variables as needed
+
+
+### 4. Start the Development Server
+
+```bash
+npm run dev
+```
+#### or
+```bash
+yarn dev
+```
+The app will be available at http://localhost:5173 (or the port shown in your terminal).
 
 
 
