@@ -6,6 +6,7 @@ import { getEvents, extractLocations } from "./api"
 import { InfoAlert, ErrorAlert, WarningAlert} from "./components/Alert"
 import CityEventsChart from "./components/CityEventsChart"
 import EventGenreChart from "./components/EventGenreChart"
+import { toast, ToastContainer } from "react-toastify"
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -36,9 +37,26 @@ function App() {
     fetchData();
  }, [currentCity, currentNOE]);
 
+  const notifyUser = (msg, type, toastId) => {
+    toast(msg, {
+      toastId,
+      type
+    });
+  }
 
   return (
     <div className="App">
+      <ToastContainer 
+      position="top-center"
+      autoClose={3000}
+      hideProgressBar={true}
+      newestOnTop={true}
+      closeOnClick={false}
+      rtl={false}
+      pauseOnFocusLoss
+      pauseOnHover
+      theme="dark"
+      />
       <div className="alerts-container">
        {infoAlert.length ? <InfoAlert text={infoAlert}/> : null}
        {errorAlert.length ? <ErrorAlert text={errorAlert}/> : null}
@@ -50,11 +68,13 @@ function App() {
       allLocations={allLocations} 
       setCurrentCity={setCurrentCity}
       setInfoAlert={setInfoAlert}
+      notifyUser={notifyUser}
       />
       <p>Number of events:</p>
       <NumberOfEvents 
       setCurrentNOE={setCurrentNOE}
       setErrorAlert={setErrorAlert}
+      notifyUser={notifyUser}
       />
       <div className="charts-container" >
       <EventGenreChart

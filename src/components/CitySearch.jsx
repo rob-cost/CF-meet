@@ -3,7 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 
-const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
+const CitySearch = ({ allLocations, setCurrentCity, notifyUser }) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -22,7 +22,8 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
     } else {
       infoText = ""
     }
-    setInfoAlert(infoText);
+    // setInfoAlert(infoText);
+    infoText && notifyUser(infoText, 'error', 'infoAlert');
   };
 
   const handleItemClicked = (event) => {
@@ -30,7 +31,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
     setQuery(value);
     setShowSuggestions(false); // to hide the list
     setCurrentCity(value);
-    setInfoAlert("");
+    // setInfoAlert("");
   };
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getEvents } from "../api";
 import { use } from "react";
 
-const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
+const NumberOfEvents = ({ setCurrentNOE, setErrorAlert, notifyUser }) => {
   const [numberEvents, setNumberEvents] = useState(32);
 
 
@@ -15,7 +15,8 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
       errorText = ""
       setCurrentNOE(numberEvents)
     }
-     setErrorAlert(errorText);
+    //  setErrorAlert(errorText);
+     errorText && notifyUser(errorText, 'error', 'errorAlert');
   }, [numberEvents])
 
   /* let errorText;
