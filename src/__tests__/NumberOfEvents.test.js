@@ -5,52 +5,53 @@ import userEvent from "@testing-library/user-event";
 import { getEvents } from "../api";
 import App from "../App";
 
-describe('<NumberOfEvents/> component', () => {
+describe("<NumberOfEvents/> component", () => {
   let NumberOfEventsComponent;
   beforeEach(() => {
     const mockSetCurrentNOE = jest.fn();
-    NumberOfEventsComponent = render(<NumberOfEvents 
-      setCurrentNOE={mockSetCurrentNOE}
-      setErrorAlert={() => {}} 
-      />)
-  })
+    NumberOfEventsComponent = render(
+      <NumberOfEvents
+        setCurrentNOE={mockSetCurrentNOE}
+        setErrorAlert={() => {}}
+        notifyUser={() => {}}
+      />
+    );
+  });
 
-  test('the component contain an element with the role of textbox', () => {
-    const textBox = NumberOfEventsComponent.queryByRole('textbox')
+  test("the component contain an element with the role of textbox", () => {
+    const textBox = NumberOfEventsComponent.queryByRole("textbox");
     expect(textBox).toBeInTheDocument();
-  })
+  });
 
-  test('the default value of the input field is 32', () => {
-    const textBox = NumberOfEventsComponent.queryByRole('textbox')
-    expect(textBox).toHaveValue('32');
-  })
+  test("the default value of the input field is 32", () => {
+    const textBox = NumberOfEventsComponent.queryByRole("textbox");
+    expect(textBox).toHaveValue("32");
+  });
 
-  test('the default value of the input field is what written in the textbox', async () => {
+  test("the default value of the input field is what written in the textbox", async () => {
     const user = userEvent.setup();
-    const textBox = NumberOfEventsComponent.queryByRole('textbox')
-    await user.clear(textBox)
-    await user.type(textBox, '10');
-    expect(textBox).toHaveValue('10');
-  })
-})
+    const textBox = NumberOfEventsComponent.queryByRole("textbox");
+    await user.clear(textBox);
+    await user.type(textBox, "10");
+    expect(textBox).toHaveValue("10");
+  });
+});
 
-describe('<NumberOfEvents/> integration', () => {
-  test('the number of events in the list will change accordingly to what is written in the input field', async () => {
+describe("<NumberOfEvents/> integration", () => {
+  test("the number of events in the list will change accordingly to what is written in the input field", async () => {
     const user = userEvent.setup();
     const AppComponent = render(<App />);
     const AppDOM = AppComponent.container.firstChild;
-   
-    const eventsContainer = AppDOM.querySelector('#number-events')
-    const textBox = within(eventsContainer).getByRole('textbox')
 
+    const eventsContainer = AppDOM.querySelector("#number-events");
+    const textBox = within(eventsContainer).getByRole("textbox");
 
+    await user.clear(textBox);
+    await user.type(textBox, "10");
 
-    await user.clear(textBox)
-    await user.type(textBox, '10');
+    const EventListDOM = AppDOM.querySelector("#event-list");
+    const EventListItems = within(EventListDOM).queryAllByRole("listitem");
 
-     const EventListDOM = AppDOM.querySelector('#event-list');
-     const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-
-    expect (EventListItems.length).toBe(10);
-  })
-})
+    expect(EventListItems.length).toBe(10);
+  });
+});
